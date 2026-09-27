@@ -2,6 +2,8 @@
 //   category: "AI" | "Data" | ".NET" | "Full-stack" | "Games"
 //   featured: true shows it in the top grid; archive: true moves it to the "Earlier work" list
 //   live: optional link to a running demo
+//   image: optional screenshot for featured cards, e.g. "screenshots/claimlens.png" (16:9 works best);
+//          without it the card shows GitHub's social preview for the repo
 
 window.PROFILE = {
   name: "Troy Clarke",

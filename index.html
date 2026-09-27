@@ -7,6 +7,10 @@
   <meta name="description" content="Troy Clarke — full-stack, data and AI projects.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <script>
+    // Apply a saved theme before paint so there's no flash.
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
   <style>
     :root {
       --bg: #f6f7f9;
@@ -19,7 +23,7 @@
       --chip: #eef1f6;
     }
     @media (prefers-color-scheme: dark) {
-      :root {
+      :root:not([data-theme="light"]) {
         --bg: #0b0f17;
         --surface: #121826;
         --text: #e8ecf3;
@@ -28,7 +32,19 @@
         --accent: #60a5fa;
         --accent-2: #4ade80;
         --chip: #1a2233;
+        color-scheme: dark;
       }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b0f17;
+      --surface: #121826;
+      --text: #e8ecf3;
+      --muted: #8e98ab;
+      --border: #222b3b;
+      --accent: #60a5fa;
+      --accent-2: #4ade80;
+      --chip: #1a2233;
+      color-scheme: dark;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -50,6 +66,13 @@
       border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
     }
     .links a:hover { border-color: var(--accent); color: var(--accent); }
+    .nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    #theme {
+      font: inherit; font-size: 15px; line-height: 1; cursor: pointer; color: var(--text);
+      width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
+    }
+    #theme:hover { border-color: var(--accent); color: var(--accent); }
+    #theme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
     .hero { padding: 48px 0 40px; max-width: 720px; }
     .hero h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; }
@@ -78,10 +101,20 @@
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
       padding: 20px; display: flex; flex-direction: column; gap: 10px;
-      transition: border-color .15s, transform .15s;
+      transition: border-color .15s, transform .15s; overflow: hidden;
     }
     .card:hover { border-color: var(--accent); transform: translateY(-2px); }
     .card.featured { border-top: 3px solid var(--accent); }
+    .thumb {
+      margin: -20px -20px 6px; aspect-ratio: 16 / 9; background: var(--chip);
+      border-bottom: 1px solid var(--border); overflow: hidden; display: block; text-decoration: none;
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .thumb .ph {
+      width: 100%; height: 100%; display: grid; place-items: center;
+      font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: #fff;
+      background: linear-gradient(135deg, #14532d, #1e3a8a 60%, #2563eb);
+    }
     .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
     .card h3 { font-size: 17px; font-weight: 600; }
     .cat { font-size: 12px; color: var(--accent-2); white-space: nowrap; }
@@ -121,7 +154,10 @@
         <div class="logo" aria-hidden="true"></div>
         <div><b id="name"></b><span id="tagline"></span></div>
       </div>
-      <nav class="links" id="links"></nav>
+      <div class="nav">
+        <nav class="links" id="links"></nav>
+        <button id="theme" type="button"></button>
+      </div>
     </header>
 
     <section class="hero">
@@ -181,8 +217,27 @@
       }).join("");
     }
 
+    // Featured cards get a screenshot: `image:` in projects.js, else GitHub's
+    // social preview for the repo, else an initials placeholder.
+    const initials = (t) => {
+      const w = t.split(/\s+/);
+      return (w.length > 1 ? w[0][0] + w[1][0] : t.slice(0, 2)).toUpperCase();
+    };
+    function thumb(p) {
+      const src = p.image || `https://opengraph.githubassets.com/1/troyclarke69/${p.repo}`;
+      return `<a class="thumb" href="${esc(p.live || gh(p.repo))}" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true">
+        <img src="${esc(src)}" alt="" loading="lazy" data-initials="${esc(initials(p.title))}">
+      </a>`;
+    }
+    $("grid").addEventListener("error", (e) => {
+      const img = e.target;
+      if (img.tagName !== "IMG") return;
+      img.outerHTML = `<div class="ph">${esc(img.dataset.initials)}</div>`;
+    }, true);
+
     function card(p) {
       return `<article class="card${p.featured ? " featured" : ""}">
+        ${p.featured ? thumb(p) : ""}
         <div class="card-top"><h3>${esc(p.title)}</h3><span class="cat">${esc(p.category)}</span></div>
         <p>${esc(p.summary)}</p>
         <div class="tags">${p.tech.map((t) => `<span>${esc(t)}</span>`).join("")}</div>
@@ -218,6 +273,23 @@
     $("search").addEventListener("input", (e) => { query = e.target.value; renderGrid(); });
 
     renderFilters(); renderGrid();
+
+    const root = document.documentElement;
+    const dark = matchMedia("(prefers-color-scheme: dark)");
+    const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : dark.matches;
+    function renderTheme() {
+      const d = isDark();
+      $("theme").textContent = d ? "☀" : "☾";
+      $("theme").setAttribute("aria-label", d ? "Switch to light mode" : "Switch to dark mode");
+      $("theme").title = $("theme").getAttribute("aria-label");
+    }
+    $("theme").addEventListener("click", () => {
+      root.dataset.theme = isDark() ? "light" : "dark";
+      try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      renderTheme();
+    });
+    dark.addEventListener("change", renderTheme);
+    renderTheme();
   </script>
 </body>
 </html>
