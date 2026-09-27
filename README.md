@@ -1,5 +1,7 @@
-# Personal homepage
+# Hub
 
-A single-page personal website. Everything is in `index.html` — no build step.
+A single landing page for all of Troy Clarke's projects.
 
-To view it, open `index.html` in a browser. It's hosted with GitHub Pages.
+- **Edit content:** everything (profile, projects, links) lives in `projects.js`. Add a project by copying an entry.
+- **Categories:** `AI`, `Data`, `.NET`, `Full-stack`, `Games`. `featured: true` highlights a card, `archive: true` moves it to "Earlier work", `live:` adds a demo link.
+- **No build step:** plain HTML + JS. Open `index.html` via any static server, or view it on GitHub Pages.
