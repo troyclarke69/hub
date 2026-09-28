@@ -1,16 +1,17 @@
 // All hub content lives here. To add a project, copy an entry and edit it.
 //   category: "AI" | "Data" | ".NET" | "Full-stack" | "Games"
-//   featured: true shows it in the top grid; archive: true moves it to the "Earlier work" list
+//   featured: true highlights the card, puts it first and adds a thumbnail
 //   live: optional link to a running demo
 //   image: optional screenshot for featured cards, e.g. "screenshots/claimlens.png" (16:9 works best);
-//          without it the card shows GitHub's social preview for the repo
+//          without it the card shows the project's initials
 
 window.PROFILE = {
   name: "Troy Clarke",
   tagline: "Web | Data | Cloud",
   headline: "I build fast, reliable apps — from idea to production.",
+  experience: "20+", // shown as "years experience" in the stats
   intro:
-    "Full-stack developer working across .NET, Python and TypeScript, with a growing focus on data platforms and AI-assisted products. Below is everything I've built, newest first.",
+    "Full-stack developer working across .NET, Python and TypeScript, with a growing focus on data platforms and AI-assisted products. Below are my recent projects, newest first.",
   links: {
     GitHub: "https://github.com/troyclarke69",
     LinkedIn: "https://www.linkedin.com/in/troy-clarke-6752ba9/",
@@ -20,13 +21,24 @@ window.PROFILE = {
 
 window.PROJECTS = [
   {
+    repo: "freight-audit",
+    title: "Freight Invoice Audit Agent",
+    category: "AI",
+    year: 2026,
+    featured: true,
+    live: "https://troyclarke69.github.io/freight-audit/",
+    summary: "Multi-tenant agent that audits freight invoices against contracts and bills of lading, with a per-tenant autonomy gate deciding what it can action on its own.",
+    tech: ["TypeScript", "Claude", "React", "Zod", "Evals"],
+  },
+  {
     repo: "claimLens",
     title: "ClaimLens",
     category: "AI",
     year: 2026,
     featured: true,
-    summary: "Evidence-cited extraction from insurance claim documents — a hands-on SFT + RL fine-tuning project.",
-    tech: ["Python", "SFT", "RL", "LLMs"],
+    live: "https://troyclarke69.github.io/claimLens/",
+    summary: "Evidence-cited extraction from scanned insurance claims: a vision-language model fine-tuned with SFT and GRPO, with fairness evals and a hash-chained audit trail.",
+    tech: ["Python", "Qwen2.5-VL", "LoRA", "GRPO", "FastAPI", "Angular"],
   },
   {
     repo: "abrain",
@@ -153,18 +165,13 @@ window.PROJECTS = [
     summary: "Translation app that verifies each result by translating it back to the original language.",
     tech: ["Python", "Streamlit", "Gemini"],
   },
-
-  // Earlier work
-  { repo: "ngCorona-v1", title: "Corona Now", category: "Full-stack", year: 2020, archive: true, live: "https://corona-now.netlify.app", summary: "COVID dashboard with third-party APIs and Google Charts.", tech: ["Angular"] },
-  { repo: "nextjs_covid_test", title: "Next.js COVID", category: "Full-stack", year: 2022, archive: true, live: "https://nextjs-covid-test.vercel.app", summary: "COVID stats built with Next.js.", tech: ["Next.js"] },
-  { repo: "CovidTracker", title: "CovidTracker", category: "Full-stack", year: 2021, archive: true, summary: "React app charting COVID data.", tech: ["React", "Chart.js"] },
-  { repo: "next-realtor-test", title: "Real Estate App", category: "Full-stack", year: 2022, archive: true, summary: "Property listings app.", tech: ["Next.js"] },
-  { repo: "ngOrder-v11", title: "ngOrder", category: "Full-stack", year: 2021, archive: true, summary: "Ordering app, upgraded from Angular 9 to 11.", tech: ["Angular", ".NET"] },
-  { repo: "WikiVox-Api", title: "WikiVox API", category: ".NET", year: 2021, archive: true, summary: "Backend API for WikiVox and ngOrder.", tech: [".NET"] },
-  { repo: "Wikivox", title: "WikiVox", category: ".NET", year: 2019, archive: true, summary: "ASP.NET Core MVC app.", tech: ["ASP.NET Core"] },
-  { repo: "newsman", title: "Newsman", category: ".NET", year: 2020, archive: true, summary: "News app with Entity Framework.", tech: ["ASP.NET Core", "EF"] },
-  { repo: "Googster", title: "Googster", category: ".NET", year: 2020, archive: true, summary: "ASP.NET Core MVC + EF playground.", tech: ["ASP.NET Core", "EF"] },
-  { repo: "copd-api", title: "COPD API", category: ".NET", year: 2020, archive: true, summary: ".NET Core 3.1 MVC API.", tech: [".NET Core"] },
-  { repo: "ng-Dash", title: "ng-Dash", category: "Full-stack", year: 2019, archive: true, summary: "Dashboard with Angular, Web API and PostgreSQL.", tech: ["Angular", "Web API", "Postgres"] },
-  { repo: "tictactoe", title: "Tic-Tac-Toe", category: "Games", year: 2019, archive: true, summary: "My first React app.", tech: ["React"] },
+  {
+    repo: "ngCorona-v1",
+    title: "Corona Now",
+    category: "Full-stack",
+    year: 2020,
+    live: "https://corona-now.netlify.app",
+    summary: "COVID dashboard built on third-party APIs, with Google Charts.",
+    tech: ["Angular", "Google Charts"],
+  },
 ];
