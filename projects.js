@@ -1,5 +1,5 @@
 // All hub content lives here. To add a project, copy an entry and edit it.
-//   category: "AI" | "Data" | ".NET" | "Full-stack" | "Games"
+//   category: "AI" | "Data" | ".NET" | "Full-stack" | "Desktop" | "Games"
 //   featured: true highlights the card and puts it first
 //   live: optional link to a running demo
 //   image: optional screenshot shown on a featured card, e.g. "screenshots/claimlens.png" (16:9 works best);
@@ -114,7 +114,7 @@ window.PROJECTS = [
     title: "Project Seven",
     category: "AI",
     year: 2026,
-    summary: "Project registry that auto-generates documentation from GitHub webhooks using Gemini.",
+    summary: "Multi-tenant project registry that writes and refreshes project documentation with Claude (Gemini as a fallback), triggered by GitHub webhooks, with doc history snapshots.",
     tech: ["TypeScript", "React", "Next.js", "Drizzle", "Postgres", "Firebase", "Claude", "Gemini", "NextAuth", "bcrypt"],
   },
   {
@@ -128,9 +128,9 @@ window.PROJECTS = [
   {
     repo: "SeeYou2",
     title: "SeeYou2",
-    category: "AI",
+    category: "Desktop",
     year: 2026,
-    summary: "AI diagnostic tool.",
+    summary: "Windows desktop scanner that checks running processes, startup entries, browser extensions and the UI Automation tree for software quietly watching the system, with a risk score and plain-language advice.",
     tech: ["TypeScript", "Rust", "React", "React Router", "Tailwind", "Vite", "Tauri"],
   },
   {
