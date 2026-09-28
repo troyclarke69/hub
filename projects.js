@@ -1,9 +1,9 @@
 // All hub content lives here. To add a project, copy an entry and edit it.
 //   category: "AI" | "Data" | ".NET" | "Full-stack" | "Games"
-//   featured: true highlights the card, puts it first and adds a thumbnail
+//   featured: true highlights the card and puts it first
 //   live: optional link to a running demo
-//   image: optional screenshot for featured cards, e.g. "screenshots/claimlens.png" (16:9 works best);
-//          without it the card shows the project's initials
+//   image: optional screenshot shown on a featured card, e.g. "screenshots/claimlens.png" (16:9 works best);
+//          without it the card has no thumbnail
 
 window.PROFILE = {
   name: "Troy Clarke",
@@ -16,6 +16,7 @@ window.PROFILE = {
     GitHub: "https://github.com/troyclarke69",
     LinkedIn: "https://www.linkedin.com/in/troy-clarke-6752ba9/",
     Email: "mailto:teclarke@rogers.com",
+    Résumé: "Troy_Clarke_Resume.pdf",
   },
 };
 
