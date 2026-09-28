@@ -20,13 +20,24 @@ window.PROFILE = {
 
 window.PROJECTS = [
   {
+    repo: "freight-audit",
+    title: "Freight Invoice Audit Agent",
+    category: "AI",
+    year: 2026,
+    featured: true,
+    live: "https://troyclarke69.github.io/freight-audit/",
+    summary: "Multi-tenant agent that audits freight invoices against contracts and bills of lading, with a per-tenant autonomy gate deciding what it can action on its own.",
+    tech: ["TypeScript", "Claude", "React", "Zod", "Evals"],
+  },
+  {
     repo: "claimLens",
     title: "ClaimLens",
     category: "AI",
     year: 2026,
     featured: true,
-    summary: "Evidence-cited extraction from insurance claim documents — a hands-on SFT + RL fine-tuning project.",
-    tech: ["Python", "SFT", "RL", "LLMs"],
+    live: "https://troyclarke69.github.io/claimLens/",
+    summary: "Evidence-cited extraction from scanned insurance claims: a vision-language model fine-tuned with SFT and GRPO, with fairness evals and a hash-chained audit trail.",
+    tech: ["Python", "Qwen2.5-VL", "LoRA", "GRPO", "FastAPI", "Angular"],
   },
   {
     repo: "abrain",
