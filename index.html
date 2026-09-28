@@ -66,7 +66,8 @@
       border: 1px solid var(--border); border-radius: 999px; background: var(--surface);
     }
     .links a:hover { border-color: var(--accent); color: var(--accent); }
-    .nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .nav { display: flex; gap: 8px; align-items: flex-start; }
+    #theme { flex: none; }
     #theme {
       font: inherit; font-size: 15px; line-height: 1; cursor: pointer; color: var(--text);
       width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
@@ -105,9 +106,9 @@
     }
     .card:hover { border-color: var(--accent); transform: translateY(-2px); }
     .card.featured { border-top: 3px solid var(--accent); }
-    /* Start the non-featured cards on a fresh row, so a short card never
-       shares a row with (and gets stretched to) a card with a thumbnail. */
-    .card.featured + .card:not(.featured) { grid-column-start: 1; }
+    /* When featured cards have thumbnails, start the other cards on a fresh row,
+       so a short card never shares a row with (and gets stretched to) one. */
+    .card.featured:has(> .thumb) + .card:not(.featured) { grid-column-start: 1; }
     .thumb {
       margin: -20px -20px 6px; aspect-ratio: 16 / 9; background: var(--chip);
       border-bottom: 1px solid var(--border); overflow: hidden; display: block; text-decoration: none;
@@ -165,8 +166,17 @@
     <footer id="footer"></footer>
   </div>
 
-  <script src="projects.js"></script>
-  <script>
+  <script type="module">
+    // Load projects.js fresh on every visit. GitHub Pages lets browsers cache
+    // files for 10 minutes, which can pair a new page with stale data.
+    await new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = `projects.js?v=${Date.now()}`;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.append(s);
+    });
+
     const P = window.PROFILE, ALL = window.PROJECTS;
     const gh = (repo) => `https://github.com/troyclarke69/${repo}`;
     const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -177,7 +187,10 @@
     $("headline").textContent = P.headline;
     $("intro").textContent = P.intro;
     $("links").innerHTML = Object.entries(P.links)
-      .map(([k, v]) => `<a href="${esc(v)}"${v.startsWith("http") ? ' target="_blank" rel="noreferrer"' : ""}>${esc(k)}</a>`)
+      .map(([k, v]) => {
+        const attrs = v.startsWith("http") ? ' target="_blank" rel="noreferrer"' : v.endsWith(".pdf") ? " download" : "";
+        return `<a href="${esc(v)}"${attrs}>${esc(k)}</a>`;
+      })
       .join("");
     document.title = `${P.name} — Projects`;
     $("footer").innerHTML = `© ${new Date().getFullYear()} ${esc(P.name)} · <a href="${gh("hub")}" target="_blank" rel="noreferrer">Source for this page</a>`;
@@ -199,17 +212,16 @@
       }).join("");
     }
 
-    // Featured cards get a screenshot from `image:` in projects.js, or the
-    // project's initials until one is added (or if it fails to load).
+    // A featured card shows a screenshot only when it has `image:` in
+    // projects.js. If the image fails to load, the project's initials show instead.
     const initials = (t) => {
       const w = t.split(/\s+/);
       return (w.length > 1 ? w[0][0] + w[1][0] : t.slice(0, 2)).toUpperCase();
     };
     function thumb(p) {
-      const inner = p.image
-        ? `<img src="${esc(p.image)}" alt="" loading="lazy" data-initials="${esc(initials(p.title))}">`
-        : `<div class="ph">${esc(initials(p.title))}</div>`;
-      return `<a class="thumb" href="${esc(p.live || gh(p.repo))}" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true">${inner}</a>`;
+      return `<a class="thumb" href="${esc(p.live || gh(p.repo))}" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true">
+        <img src="${esc(p.image)}" alt="" loading="lazy" data-initials="${esc(initials(p.title))}">
+      </a>`;
     }
     $("grid").addEventListener("error", (e) => {
       const img = e.target;
@@ -219,7 +231,7 @@
 
     function card(p) {
       return `<article class="card${p.featured ? " featured" : ""}">
-        ${p.featured ? thumb(p) : ""}
+        ${p.featured && p.image ? thumb(p) : ""}
         <div class="card-top"><h3>${esc(p.title)}</h3><span class="cat">${esc(p.category)}</span></div>
         <p>${esc(p.summary)}</p>
         <div class="tags">${p.tech.map((t) => `<span>${esc(t)}</span>`).join("")}</div>

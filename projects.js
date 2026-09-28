@@ -1,21 +1,22 @@
 // All hub content lives here. To add a project, copy an entry and edit it.
 //   category: "AI" | "Data" | ".NET" | "Full-stack" | "Games"
-//   featured: true highlights the card, puts it first and adds a thumbnail
+//   featured: true highlights the card and puts it first
 //   live: optional link to a running demo
-//   image: optional screenshot for featured cards, e.g. "screenshots/claimlens.png" (16:9 works best);
-//          without it the card shows the project's initials
+//   image: optional screenshot shown on a featured card, e.g. "screenshots/claimlens.png" (16:9 works best);
+//          without it the card has no thumbnail
 
 window.PROFILE = {
   name: "Troy Clarke",
   tagline: "Web | Data | Cloud",
   headline: "I build fast, reliable apps — from idea to production.",
-  experience: "20+", // shown as "years experience" in the stats
+  experience: "25+", // shown as "years experience" in the stats
   intro:
     "Full-stack developer working across .NET, Python and TypeScript, with a growing focus on data platforms and AI-assisted products. Below are my recent projects, newest first.",
   links: {
     GitHub: "https://github.com/troyclarke69",
     LinkedIn: "https://www.linkedin.com/in/troy-clarke-6752ba9/",
     Email: "mailto:teclarke@rogers.com",
+    Résumé: "Troy_Clarke_Resume.pdf",
   },
 };
 
