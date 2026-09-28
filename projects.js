@@ -1,5 +1,5 @@
 // All hub content lives here. To add a project, copy an entry and edit it.
-//   category: "AI" | "Data" | ".NET" | "Full-stack" | "Games"
+//   category: "AI" | "Data" | ".NET" | "Full-stack" | "Windows" | "Games"
 //   featured: true highlights the card and puts it first
 //   live: optional link to a running demo
 //   image: optional screenshot shown on a featured card, e.g. "screenshots/claimlens.png" (16:9 works best);
@@ -9,9 +9,8 @@ window.PROFILE = {
   name: "Troy Clarke",
   tagline: "Web | Data | Cloud",
   headline: "I build fast, reliable apps — from idea to production.",
-  experience: "25+", // shown as "years experience" in the stats
   intro:
-    "Full-stack developer working across .NET, Python and TypeScript, with a growing focus on data platforms and AI-assisted products. Below are my recent projects, newest first.",
+    "Senior Full-stack developer working across .NET, Python and TypeScript, with a growing focus on data platforms and AI-assisted products. Below are my recent projects, newest first.",
   links: {
     GitHub: "https://github.com/troyclarke69",
     LinkedIn: "https://www.linkedin.com/in/troy-clarke-6752ba9/",
@@ -23,7 +22,7 @@ window.PROFILE = {
 window.PROJECTS = [
   {
     repo: "freight-audit",
-    title: "Freight Invoice Audit Agent",
+    title: "Freight Audit",
     category: "AI",
     year: 2026,
     featured: true,
@@ -43,28 +42,31 @@ window.PROJECTS = [
   },
   {
     repo: "abrain",
-    title: "aBrain",
+    title: "Job Market Analyzer",
     category: "Full-stack",
     year: 2026,
     featured: true,
+    live: "https://jobmarketanalytics.netlify.app",
     summary: "Job search and analytics platform with a résumé matcher and optimizer.",
     tech: ["TypeScript", "Python", "React", "Next.js", "Tailwind", "FastAPI", "Pydantic", "SQLAlchemy", "Postgres", "dbt", "Pandas", "NextAuth", "JWT", "bcrypt", "Recharts"],
   },
   {
     repo: "vibe",
-    title: "Vibe",
+    title: "vibe-agent",
     category: "AI",
     year: 2026,
     featured: true,
+    live: "https://vibe-agent.netlify.app",
     summary: "Type a high-level “vibe”, get back a structured task list. Clean Architecture backend, a dedicated AI agent, and two real databases.",
     tech: ["TypeScript", "Python", "React", "Next.js", "Tailwind", "FastAPI", "Express", "Pydantic", "Postgres", "MongoDB", "Claude", "OpenAI"],
   },
   {
     repo: "smed",
-    title: "SMED",
+    title: "smedj",
     category: ".NET",
     year: 2026,
     featured: true,
+    live: "https://smedj.netlify.app",
     summary: "Financial-services app: relational database engineering, a secure layered Web API, React and Blazor clients, vulnerability scanning and CI/CD.",
     tech: ["TypeScript", "C#", "React", "Vite", "Blazor", "Swagger", "FluentValidation", "Entity Framework", "Dapper", "SQL Server", "JWT", "bcrypt"],
   },
@@ -79,18 +81,20 @@ window.PROJECTS = [
   },
   {
     repo: "mini-faire",
-    title: "Mini Faire",
+    title: "RMAP",
     category: "Data",
     year: 2026,
     featured: true,
+    live: "https://retailmarketanalytics.netlify.app",
     summary: "Retail marketplace analytics platform: data contracts, batch + event ingestion, quarantine, a DuckDB warehouse, semantic metrics and an API.",
     tech: ["TypeScript", "Python", "React", "Next.js", "Tailwind", "FastAPI", "Pydantic", "WebSockets", "DuckDB", "Polars"],
   },
   {
     repo: "mini-paypal",
-    title: "MiniPayPal",
+    title: "PayBuddy",
     category: ".NET",
     year: 2026,
+    live: "https://minipaybuddy.netlify.app",
     summary: "Wallet and payments backend with atomic, idempotent transfers on an immutable double-entry ledger.",
     tech: ["TypeScript", "C#", "React", "React Router", "Vite", "Swagger", "Entity Framework", "Postgres", "JWT", "bcrypt"],
   },
@@ -99,6 +103,7 @@ window.PROJECTS = [
     title: "Marketing Attribution Engine",
     category: "Data",
     year: 2026,
+    live: "https://miniattributionengine.netlify.app",
     summary: "Ingests ads, clickstream and orders into BigQuery, applies 7-day last-touch attribution, and serves a campaign dashboard.",
     tech: ["JavaScript", "Python", "React", "Vite", "FastAPI", "Pydantic", "BigQuery", "Airflow", "Pandas", "NumPy", "scikit-learn", "Recharts"],
   },
@@ -112,33 +117,36 @@ window.PROJECTS = [
   },
   {
     repo: "ProjectSeven",
-    title: "Project Seven",
+    title: "Projectry",
     category: "AI",
     year: 2026,
-    summary: "Project registry that auto-generates documentation from GitHub webhooks using Gemini.",
+    live: "https://projectry.netlify.app",
+    summary: "Multi-tenant project registry that writes and refreshes project documentation with Claude (Gemini as a fallback), triggered by GitHub webhooks, with doc history snapshots.",
     tech: ["TypeScript", "React", "Next.js", "Drizzle", "Postgres", "Firebase", "Claude", "Gemini", "NextAuth", "bcrypt"],
   },
   {
     repo: "blackjackmatch-game",
-    title: "Blackjack Match",
+    title: "BlackJackMatch",
     category: "Games",
     year: 2026,
+    live: "https://blackjackmatch.netlify.app/",
     summary: "A Blackjack + Match combo game written in plain JavaScript in 2021, reimagined with AI in 2026 — now with an Android version.",
     tech: ["JavaScript", "Capacitor", "Android"],
   },
   {
     repo: "SeeYou2",
     title: "SeeYou2",
-    category: "AI",
+    category: "Windows",
     year: 2026,
-    summary: "AI diagnostic tool.",
+    summary: "Windows desktop scanner that checks running processes, startup entries, browser extensions and the UI Automation tree for software quietly watching the system, with a risk score and plain-language advice.",
     tech: ["TypeScript", "Rust", "React", "React Router", "Tailwind", "Vite", "Tauri"],
   },
   {
     repo: "tcrm",
     title: "TCRM",
-    category: "Full-stack",
+    category: ".NET",
     year: 2026,
+    live: "https://tecrm.netlify.app",
     summary: "CRM demo with a .NET API, Postgres and a React + Tailwind front end.",
     tech: ["TypeScript", "C#", "React", "React Router", "Tailwind", "Vite", "Swagger", "Entity Framework", "Postgres", "JWT", "bcrypt"],
   },
@@ -152,9 +160,10 @@ window.PROJECTS = [
   },
   {
     repo: "CherryTree",
-    title: "Cherry Tree Co.",
+    title: "CherryTree",
     category: "Full-stack",
     year: 2026,
+    live: "https://cherrytree.netlify.app",
     summary: "Business site with a JWT-secured FastAPI backend, run with Docker Compose.",
     tech: ["TypeScript", "Python", "React", "Vite", "FastAPI", "Pydantic", "SQLAlchemy", "Postgres", "JWT", "bcrypt"],
   },
