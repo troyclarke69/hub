@@ -29,7 +29,7 @@ window.PROJECTS = [
     featured: true,
     live: "https://troyclarke69.github.io/freight-audit/",
     summary: "Multi-tenant agent that audits freight invoices against contracts and bills of lading, with a per-tenant autonomy gate deciding what it can action on its own.",
-    tech: ["TypeScript", "Claude", "React", "Zod", "Evals"],
+    tech: ["TypeScript", "React", "Vite", "Zod", "Claude"],
   },
   {
     repo: "claimLens",
@@ -39,7 +39,7 @@ window.PROJECTS = [
     featured: true,
     live: "https://troyclarke69.github.io/claimLens/",
     summary: "Evidence-cited extraction from scanned insurance claims: a vision-language model fine-tuned with SFT and GRPO, with fairness evals and a hash-chained audit trail.",
-    tech: ["Python", "Qwen2.5-VL", "LoRA", "GRPO", "FastAPI", "Angular"],
+    tech: ["TypeScript", "Python", "Angular", "FastAPI", "Pydantic", "Pandas", "NumPy", "PyTorch", "Transformers", "PEFT"],
   },
   {
     repo: "abrain",
@@ -48,7 +48,7 @@ window.PROJECTS = [
     year: 2026,
     featured: true,
     summary: "Job search and analytics platform with a résumé matcher and optimizer.",
-    tech: ["Next.js", "FastAPI", "Postgres", "dbt", "NextAuth"],
+    tech: ["TypeScript", "Python", "React", "Next.js", "Tailwind", "FastAPI", "Pydantic", "SQLAlchemy", "Postgres", "dbt", "Pandas", "NextAuth", "JWT", "bcrypt", "Recharts"],
   },
   {
     repo: "vibe",
@@ -57,7 +57,7 @@ window.PROJECTS = [
     year: 2026,
     featured: true,
     summary: "Type a high-level “vibe”, get back a structured task list. Clean Architecture backend, a dedicated AI agent, and two real databases.",
-    tech: ["Next.js", "Node.js", "Python", "MongoDB", "Postgres"],
+    tech: ["TypeScript", "Python", "React", "Next.js", "Tailwind", "FastAPI", "Express", "Pydantic", "Postgres", "MongoDB", "Claude", "OpenAI"],
   },
   {
     repo: "smed",
@@ -66,7 +66,7 @@ window.PROJECTS = [
     year: 2026,
     featured: true,
     summary: "Financial-services app: relational database engineering, a secure layered Web API, React and Blazor clients, vulnerability scanning and CI/CD.",
-    tech: [".NET", "React", "Blazor", "SQL", "CI/CD"],
+    tech: ["TypeScript", "C#", "React", "Vite", "Blazor", "Swagger", "FluentValidation", "Entity Framework", "Dapper", "SQL Server", "JWT", "bcrypt"],
   },
   {
     repo: "rbac",
@@ -75,7 +75,7 @@ window.PROJECTS = [
     year: 2026,
     featured: true,
     summary: "Standalone identity service with users, roles and permissions, RS256 JWTs, permission-based middleware and PBKDF2 hashing.",
-    tech: [".NET", "Dapper", "JWT", "Security"],
+    tech: ["C#", "Dapper", "SQL Server", "JWT"],
   },
   {
     repo: "mini-faire",
@@ -84,7 +84,7 @@ window.PROJECTS = [
     year: 2026,
     featured: true,
     summary: "Retail marketplace analytics platform: data contracts, batch + event ingestion, quarantine, a DuckDB warehouse, semantic metrics and an API.",
-    tech: ["Python", "DuckDB", "Polars", "FastAPI"],
+    tech: ["TypeScript", "Python", "React", "Next.js", "Tailwind", "FastAPI", "Pydantic", "WebSockets", "DuckDB", "Polars"],
   },
   {
     repo: "mini-paypal",
@@ -92,7 +92,7 @@ window.PROJECTS = [
     category: ".NET",
     year: 2026,
     summary: "Wallet and payments backend with atomic, idempotent transfers on an immutable double-entry ledger.",
-    tech: [".NET 8", "Postgres", "Clean Architecture"],
+    tech: ["TypeScript", "C#", "React", "React Router", "Vite", "Swagger", "Entity Framework", "Postgres", "JWT", "bcrypt"],
   },
   {
     repo: "mini_attribution_engine",
@@ -100,7 +100,7 @@ window.PROJECTS = [
     category: "Data",
     year: 2026,
     summary: "Ingests ads, clickstream and orders into BigQuery, applies 7-day last-touch attribution, and serves a campaign dashboard.",
-    tech: ["Python", "BigQuery", "FastAPI", "React"],
+    tech: ["JavaScript", "Python", "React", "Vite", "FastAPI", "Pydantic", "BigQuery", "Airflow", "Pandas", "NumPy", "scikit-learn", "Recharts"],
   },
   {
     repo: "triune",
@@ -108,7 +108,7 @@ window.PROJECTS = [
     category: "AI",
     year: 2026,
     summary: "A “self-evolving digital organism” merged from three AI-authored prototypes into one event-driven mesh with an adaptive UI.",
-    tech: ["TypeScript", "Event-driven", "Multi-agent"],
+    tech: ["TypeScript", "React", "Vite", "Express", "Temporal", "NATS", "WebSockets", "Postgres", "Redis"],
   },
   {
     repo: "ProjectSeven",
@@ -116,7 +116,7 @@ window.PROJECTS = [
     category: "AI",
     year: 2026,
     summary: "Project registry that auto-generates documentation from GitHub webhooks using Gemini.",
-    tech: ["Next.js", "Firebase", "Gemini", "Webhooks"],
+    tech: ["TypeScript", "React", "Next.js", "Drizzle", "Postgres", "Firebase", "Claude", "Gemini", "NextAuth", "bcrypt"],
   },
   {
     repo: "blackjackmatch-game",
@@ -124,7 +124,7 @@ window.PROJECTS = [
     category: "Games",
     year: 2026,
     summary: "A Blackjack + Match combo game written in plain JavaScript in 2021, reimagined with AI in 2026 — now with an Android version.",
-    tech: ["JavaScript", "Android"],
+    tech: ["JavaScript", "Capacitor", "Android"],
   },
   {
     repo: "SeeYou2",
@@ -132,7 +132,7 @@ window.PROJECTS = [
     category: "AI",
     year: 2026,
     summary: "AI diagnostic tool.",
-    tech: ["JavaScript", "AI"],
+    tech: ["TypeScript", "Rust", "React", "React Router", "Tailwind", "Vite", "Tauri"],
   },
   {
     repo: "tcrm",
@@ -140,7 +140,7 @@ window.PROJECTS = [
     category: "Full-stack",
     year: 2026,
     summary: "CRM demo with a .NET API, Postgres and a React + Tailwind front end.",
-    tech: [".NET", "Postgres", "React", "Tailwind"],
+    tech: ["TypeScript", "C#", "React", "React Router", "Tailwind", "Vite", "Swagger", "Entity Framework", "Postgres", "JWT", "bcrypt"],
   },
   {
     repo: "TCHQ",
@@ -148,7 +148,7 @@ window.PROJECTS = [
     category: "Full-stack",
     year: 2026,
     summary: "Portfolio app with a JWT-protected admin API for managing projects, and a contact form stored in Postgres.",
-    tech: ["React", "Tailwind", "FastAPI", "Postgres"],
+    tech: ["TypeScript", "Python", "React", "React Router", "Tailwind", "Vite", "FastAPI", "SQLAlchemy", "Postgres", "JWT", "bcrypt"],
   },
   {
     repo: "CherryTree",
@@ -156,7 +156,7 @@ window.PROJECTS = [
     category: "Full-stack",
     year: 2026,
     summary: "Business site with a JWT-secured FastAPI backend, run with Docker Compose.",
-    tech: ["React", "Vite", "FastAPI", "Postgres", "Docker"],
+    tech: ["TypeScript", "Python", "React", "Vite", "FastAPI", "Pydantic", "SQLAlchemy", "Postgres", "JWT", "bcrypt"],
   },
   {
     repo: "VTranslator",
@@ -173,6 +173,6 @@ window.PROJECTS = [
     year: 2020,
     live: "https://corona-now.netlify.app",
     summary: "COVID dashboard built on third-party APIs, with Google Charts.",
-    tech: ["Angular", "Google Charts"],
+    tech: ["TypeScript", "Angular", "Angular Material", "Bootstrap", "Chart.js", "Google Charts"],
   },
 ];
