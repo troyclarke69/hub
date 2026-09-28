@@ -3,13 +3,13 @@
 //   featured: true highlights the card, puts it first and adds a thumbnail
 //   live: optional link to a running demo
 //   image: optional screenshot for featured cards, e.g. "screenshots/claimlens.png" (16:9 works best);
-//          without it the card shows GitHub's social preview for the repo
+//          without it the card shows the project's initials
 
 window.PROFILE = {
   name: "Troy Clarke",
   tagline: "Web | Data | Cloud",
   headline: "I build fast, reliable apps — from idea to production.",
-  since: 2019, // first year shipping, for the "years shipping" stat
+  experience: "20+", // shown as "years experience" in the stats
   intro:
     "Full-stack developer working across .NET, Python and TypeScript, with a growing focus on data platforms and AI-assisted products. Below are my recent projects, newest first.",
   links: {
@@ -164,5 +164,14 @@ window.PROJECTS = [
     year: 2026,
     summary: "Translation app that verifies each result by translating it back to the original language.",
     tech: ["Python", "Streamlit", "Gemini"],
+  },
+  {
+    repo: "ngCorona-v1",
+    title: "Corona Now",
+    category: "Full-stack",
+    year: 2020,
+    live: "https://corona-now.netlify.app",
+    summary: "COVID dashboard built on third-party APIs, with Google Charts.",
+    tech: ["Angular", "Google Charts"],
   },
 ];

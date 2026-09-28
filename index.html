@@ -105,6 +105,9 @@
     }
     .card:hover { border-color: var(--accent); transform: translateY(-2px); }
     .card.featured { border-top: 3px solid var(--accent); }
+    /* Start the non-featured cards on a fresh row, so a short card never
+       shares a row with (and gets stretched to) a card with a thumbnail. */
+    .card.featured + .card:not(.featured) { grid-column-start: 1; }
     .thumb {
       margin: -20px -20px 6px; aspect-ratio: 16 / 9; background: var(--chip);
       border-bottom: 1px solid var(--border); overflow: hidden; display: block; text-decoration: none;
@@ -183,7 +186,7 @@
     $("stats").innerHTML = [
       [ALL.length, "projects"],
       [techCount, "technologies"],
-      [new Date().getFullYear() - P.since + "+", "years shipping"],
+      [P.experience, "years experience"],
     ].map(([n, l]) => `<div><strong>${n}</strong>${l}</div>`).join("");
 
     const cats = ["All", ...new Set(ALL.map((p) => p.category))];
@@ -196,17 +199,17 @@
       }).join("");
     }
 
-    // Featured cards get a screenshot: `image:` in projects.js, else GitHub's
-    // social preview for the repo, else an initials placeholder.
+    // Featured cards get a screenshot from `image:` in projects.js, or the
+    // project's initials until one is added (or if it fails to load).
     const initials = (t) => {
       const w = t.split(/\s+/);
       return (w.length > 1 ? w[0][0] + w[1][0] : t.slice(0, 2)).toUpperCase();
     };
     function thumb(p) {
-      const src = p.image || `https://opengraph.githubassets.com/1/troyclarke69/${p.repo}`;
-      return `<a class="thumb" href="${esc(p.live || gh(p.repo))}" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true">
-        <img src="${esc(src)}" alt="" loading="lazy" data-initials="${esc(initials(p.title))}">
-      </a>`;
+      const inner = p.image
+        ? `<img src="${esc(p.image)}" alt="" loading="lazy" data-initials="${esc(initials(p.title))}">`
+        : `<div class="ph">${esc(initials(p.title))}</div>`;
+      return `<a class="thumb" href="${esc(p.live || gh(p.repo))}" target="_blank" rel="noreferrer" tabindex="-1" aria-hidden="true">${inner}</a>`;
     }
     $("grid").addEventListener("error", (e) => {
       const img = e.target;
