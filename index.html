@@ -126,21 +126,7 @@
     .actions a:hover { text-decoration: underline; }
     .empty { color: var(--muted); padding: 24px 0; }
 
-    .archive { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); overflow: hidden; }
-    .archive a {
-      display: grid; grid-template-columns: 56px 1fr auto; gap: 16px; align-items: baseline;
-      padding: 12px 20px; text-decoration: none; border-top: 1px solid var(--border);
-    }
-    .archive a:first-child { border-top: 0; }
-    .archive a:hover { background: var(--chip); }
-    .archive .yr { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
-    .archive .t b { font-weight: 500; }
-    .archive .t span { color: var(--muted); font-size: 14px; margin-left: 8px; }
-    .archive .live { font-size: 12px; color: var(--accent-2); }
     @media (max-width: 560px) {
-      .archive a { grid-template-columns: 44px 1fr; }
-      .archive .live { grid-column: 2; }
-      .archive .t span { display: block; margin-left: 0; }
       #search { max-width: none; margin-left: 0; }
     }
 
@@ -173,9 +159,6 @@
     </div>
     <div class="grid" id="grid"></div>
 
-    <h2>Earlier work · 2019–2023</h2>
-    <div class="archive" id="archive"></div>
-
     <footer id="footer"></footer>
   </div>
 
@@ -196,23 +179,19 @@
     document.title = `${P.name} — Projects`;
     $("footer").innerHTML = `© ${new Date().getFullYear()} ${esc(P.name)} · <a href="${gh("hub")}" target="_blank" rel="noreferrer">Source for this page</a>`;
 
-    const current = ALL.filter((p) => !p.archive);
-    const archived = ALL.filter((p) => p.archive).sort((a, b) => b.year - a.year);
-
     const techCount = new Set(ALL.flatMap((p) => p.tech)).size;
-    const years = ALL.map((p) => p.year);
     $("stats").innerHTML = [
       [ALL.length, "projects"],
       [techCount, "technologies"],
-      [Math.max(...years) - Math.min(...years) + "+", "years shipping"],
+      [new Date().getFullYear() - P.since + "+", "years shipping"],
     ].map(([n, l]) => `<div><strong>${n}</strong>${l}</div>`).join("");
 
-    const cats = ["All", ...new Set(current.map((p) => p.category))];
+    const cats = ["All", ...new Set(ALL.map((p) => p.category))];
     let cat = "All", query = "";
 
     function renderFilters() {
       $("filters").innerHTML = cats.map((c) => {
-        const n = c === "All" ? current.length : current.filter((p) => p.category === c).length;
+        const n = c === "All" ? ALL.length : ALL.filter((p) => p.category === c).length;
         return `<button type="button" aria-pressed="${c === cat}" data-cat="${esc(c)}">${esc(c)}<span class="n">${n}</span></button>`;
       }).join("");
     }
@@ -250,19 +229,12 @@
 
     function renderGrid() {
       const q = query.trim().toLowerCase();
-      const list = current
+      const list = ALL
         .filter((p) => cat === "All" || p.category === cat)
         .filter((p) => !q || [p.title, p.summary, ...p.tech].join(" ").toLowerCase().includes(q))
         .sort((a, b) => (b.featured === true) - (a.featured === true));
       $("grid").innerHTML = list.length ? list.map(card).join("") : `<div class="empty">No projects match that search.</div>`;
     }
-
-    $("archive").innerHTML = archived.map((p) => `
-      <a href="${esc(p.live || gh(p.repo))}" target="_blank" rel="noreferrer">
-        <span class="yr">${p.year}</span>
-        <span class="t"><b>${esc(p.title)}</b><span>${esc(p.tech.join(" · "))}</span></span>
-        ${p.live ? `<span class="live">Live ↗</span>` : ""}
-      </a>`).join("");
 
     $("filters").addEventListener("click", (e) => {
       const b = e.target.closest("button");
