@@ -22,7 +22,7 @@ window.PROFILE = {
 window.PROJECTS = [
   {
     repo: "freight-audit",
-    title: "Freight Invoice Audit Agent",
+    title: "Freight Audit",
     category: "AI",
     year: 2026,
     featured: true,
@@ -42,7 +42,7 @@ window.PROJECTS = [
   },
   {
     repo: "abrain",
-    title: "aBrain",
+    title: "Job Market Analyzer",
     category: "Full-stack",
     year: 2026,
     featured: true,
@@ -52,7 +52,7 @@ window.PROJECTS = [
   },
   {
     repo: "vibe",
-    title: "Vibe",
+    title: "vibe-agent",
     category: "AI",
     year: 2026,
     featured: true,
@@ -62,7 +62,7 @@ window.PROJECTS = [
   },
   {
     repo: "smed",
-    title: "SMED",
+    title: "smedj",
     category: ".NET",
     year: 2026,
     featured: true,
@@ -81,7 +81,7 @@ window.PROJECTS = [
   },
   {
     repo: "mini-faire",
-    title: "Mini Faire",
+    title: "RMAP",
     category: "Data",
     year: 2026,
     featured: true,
@@ -91,7 +91,7 @@ window.PROJECTS = [
   },
   {
     repo: "mini-paypal",
-    title: "MiniPayPal",
+    title: "PayBuddy",
     category: ".NET",
     year: 2026,
     live: "https://minipaybuddy.netlify.app",
@@ -117,7 +117,7 @@ window.PROJECTS = [
   },
   {
     repo: "ProjectSeven",
-    title: "Project Seven",
+    title: "Projectry",
     category: "AI",
     year: 2026,
     live: "https://projectry.netlify.app",
@@ -126,7 +126,7 @@ window.PROJECTS = [
   },
   {
     repo: "blackjackmatch-game",
-    title: "Blackjack Match",
+    title: "BlackJackMatch",
     category: "Games",
     year: 2026,
     live: "https://blackjackmatch.netlify.app/",
@@ -160,7 +160,7 @@ window.PROJECTS = [
   },
   {
     repo: "CherryTree",
-    title: "Cherry Tree Co.",
+    title: "CherryTree",
     category: "Full-stack",
     year: 2026,
     live: "https://cherrytree.netlify.app",
