@@ -224,7 +224,6 @@
     $("stats").innerHTML = [
       [ALL.length, "projects"],
       [techCount, "technologies"],
-      [P.experience, "years experience"],
     ].map(([n, l]) => `<div><strong>${n}</strong>${l}</div>`).join("");
 
     const cats = ["All", ...new Set(ALL.map((p) => p.category))];
